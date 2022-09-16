@@ -16,6 +16,7 @@ void setup()
   Serial.println(F("Hello! ST77xx TFT Test"));
 
   tft.initR(INITR_BLACKTAB);
+
   tft.fillScreen(ST77XX_BLACK);
   Serial.println("Initialized");
   loading();
@@ -23,7 +24,7 @@ void setup()
 
 void loop()
 {
-  happy();
+  randomTextFaces();
 }
 
 void randomTextFaces()
@@ -51,6 +52,9 @@ void randomTextFaces()
     text("@neromiata", 70, 2);
     delay(4000);
     break;
+  case 5:
+    happy();
+    break;
 
   default:
     break;
@@ -59,15 +63,15 @@ void randomTextFaces()
 
 void emojiSize(String text)
 {
+  tft.fillScreen(ST77XX_BLACK);
   tft.setCursor(10, 65);
-  tft.setTextColor(ST7735_RED);
+  tft.setTextColor(ST7735_WHITE);
   tft.setTextSize(6);
   tft.setTextWrap(1);
   tft.print(text);
   int rand = random(1500, 4000);
   Serial.println(rand);
   delay(rand);
-  tft.fillScreen(ST77XX_BLACK);
 }
 
 void text(String text, int screenHeight, int fontSize)
@@ -117,6 +121,7 @@ void drawArc()
 
 void happy()
 {
+  tft.fillScreen(ST77XX_BLACK);
   // Eyes
   tft.drawLine(25, 70, 40, 40, ST77XX_WHITE);
   tft.drawLine(40, 40, 55, 70, ST77XX_WHITE);
@@ -128,12 +133,13 @@ void happy()
   tft.drawLine(45, 102, 80, 102, ST77XX_WHITE);
   tft.fillCircle(45, 101, 1, ST77XX_WHITE);
   tft.fillCircle(80, 101, 1, ST77XX_WHITE);
+  delay(4000);
 }
 
 void loading()
 {
   littleGuySleeping();
-  //Loading
+  // Loading
   tft.setCursor(25, 50);
   tft.setTextColor(ST7735_WHITE);
   tft.setTextSize(2);
@@ -165,10 +171,10 @@ void loading()
 
   for (int i = 0; i < 160; i++)
   {
-    tft.drawLine(0 , i, 128, i, ST77XX_BLACK);
+    tft.drawLine(0, i, 128, i, ST77XX_BLACK);
     delay(2);
   }
-  
+
   tft.setCursor(45, 50);
   tft.setTextColor(ST7735_WHITE);
   tft.setTextSize(8);
@@ -178,7 +184,7 @@ void loading()
 
   for (int i = 0; i < 160; i++)
   {
-    tft.drawLine(0 , i, 128, i, ST77XX_BLACK);
+    tft.drawLine(0, i, 128, i, ST77XX_BLACK);
     delay(5);
   }
 
@@ -191,16 +197,17 @@ void loading()
   tft.fillScreen(ST77XX_BLACK);
 }
 
-void littleGuySleeping() {
-  //Eyes
-  //Left
+void littleGuySleeping()
+{
+  // Eyes
+  // Left
   tft.drawLine(94, 140, 98, 140, ST77XX_WHITE);
 
   tft.drawPixel(93, 139, ST77XX_WHITE);
   tft.drawPixel(92, 138, ST77XX_WHITE);
   tft.drawPixel(99, 139, ST77XX_WHITE);
   tft.drawPixel(100, 138, ST77XX_WHITE);
-  //Right
+  // Right
   tft.drawLine(104, 140, 108, 140, ST77XX_WHITE);
 
   tft.drawPixel(103, 139, ST77XX_WHITE);
@@ -208,13 +215,13 @@ void littleGuySleeping() {
   tft.drawPixel(109, 139, ST77XX_WHITE);
   tft.drawPixel(110, 138, ST77XX_WHITE);
 
-  //Mouth
+  // Mouth
   tft.drawLine(96, 147, 106, 147, ST77XX_WHITE);
 
   tft.drawPixel(95, 146, ST77XX_WHITE);
   tft.drawPixel(107, 146, ST77XX_WHITE);
 
-  //zzzzz
+  // zzzzz
   tft.drawLine(112, 136, 115, 136, ST77XX_WHITE);
   tft.drawLine(115, 132, 112, 136, ST77XX_WHITE);
   tft.drawLine(112, 132, 115, 132, ST77XX_WHITE);
