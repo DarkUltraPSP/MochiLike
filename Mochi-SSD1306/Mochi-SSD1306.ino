@@ -18,50 +18,75 @@ void setup() {
     for (;;)
       ;  // Don't proceed, loop forever
   }
-
   display.clearDisplay();
+
+  smile();
 }
 
 void loop() {
 
-  long rdmCTP = random(1, 5);
-  long rdmFace = random(1, 7);
+  // long rdmCTP = random(1, 5);
+  // long rdmFace = random(1, 7);
 
-  Serial.println(rdmCTP + "fois repetee");
-  Serial.println("Tete n°" + rdmFace);
+  // Serial.println(rdmCTP + "fois repetee");
+  // Serial.println("Tete n°" + rdmFace);
 
 
-  switch (rdmFace) {
-    case 1:
-      happy();
-      randomDelay();
-      break;
-    case 2:
-      for (int i; i < rdmCTP; i++) {
-        happyWink();
-      }
-      break;
-    case 3:
-      knock();
-      randomDelay();
-      break;
-    case 4:
-      display.clearDisplay();
-      instagram();
-      randomDelay();
-      break;
-    case 5:
-      tired();
-      randomDelay();
-      break;
-    case 6:
-      for (int i; i < rdmCTP; i++) {
-        blinking();
-      }
-      break;
-    default:
-      break;
-  }
+  // switch (rdmFace) {
+  //   case 1:
+  //     happy();
+  //     randomDelay();
+  //     break;
+  //   case 2:
+  //     for (int i; i < rdmCTP; i++) {
+  //       happyWink();
+  //     }
+  //     break;
+  //   case 3:
+  //     knock();
+  //     randomDelay();
+  //     break;
+  //   case 4:
+  //     display.clearDisplay();
+  //     instagram();
+  //     randomDelay();
+  //     break;
+  //   case 5:
+  //     tired();
+  //     randomDelay();
+  //     break;
+  //   case 6:
+  //     for (int i; i < rdmCTP; i++) {
+  //       blinking();
+  //     }
+  //     break;
+  //   case 7:
+  //    smile();
+  //    randomDelay();
+  //    break;
+  //   default:
+  //     break;
+  // }
+}
+
+void smile() {
+  display.clearDisplay();
+  //Left
+  display.drawLine(16, 32, 32, 12, SSD1306_WHITE);
+  display.display();
+  display.drawLine(32, 12, 48, 32, SSD1306_WHITE);
+  display.display();
+
+  //Right
+  display.drawLine(112, 32, 96, 12, SSD1306_WHITE);
+  display.display();
+  display.drawLine(96, 12, 80, 32, SSD1306_WHITE);
+  display.display();
+
+  //Mouth
+  display.fillRoundRect(49, 54, 30, 6, 2,
+                        SSD1306_WHITE);
+  display.display();
 }
 
 void happy() {
@@ -79,7 +104,7 @@ void happy() {
                         SSD1306_WHITE);
   display.display();
 
-  //Mouse
+  //Mouth
   display.fillRoundRect(49, 54, 30, 6, 2,
                         SSD1306_WHITE);
   display.display();
@@ -110,7 +135,7 @@ void wink() {
                         SSD1306_WHITE);
   display.display();
 
-  //Mouse
+  //Mouth
   display.fillRoundRect(54, 50,
                         20, 10, 3,
                         SSD1306_WHITE);
@@ -128,7 +153,7 @@ void knock() {
   //Right
   text(97, 12, 3, "X");
 
-  //Mouse
+  //Mouth
   display.fillRoundRect(49, 54,
                         30, 6, 2,
                         SSD1306_WHITE);
@@ -141,17 +166,17 @@ void instagram() {
 
 void tired() {
   display.clearDisplay();
-
+  //Left
   display.fillRoundRect(16, 20,
                         12, 5, 3,
                         SSD1306_WHITE);
   display.display();
-
+  //Right
   display.fillRoundRect(100, 20,
                         12, 5, 3,
                         SSD1306_WHITE);
   display.display();
-
+  //Mouth
   display.fillRoundRect(49, 54, 30, 6, 2,
                         SSD1306_WHITE);
   display.display();
