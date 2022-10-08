@@ -19,54 +19,52 @@ void setup() {
       ;  // Don't proceed, loop forever
   }
   display.clearDisplay();
-
-  smile();
 }
 
 void loop() {
 
-  // long rdmCTP = random(1, 5);
-  // long rdmFace = random(1, 7);
+  long rdmCTP = random(1, 5);
+  long rdmFace = random(1, 8);
 
-  // Serial.println(rdmCTP + "fois repetee");
-  // Serial.println("Tete n°" + rdmFace);
+  Serial.println(rdmCTP + "fois repetee");
+  Serial.println("Tete n°" + rdmFace);
 
 
-  // switch (rdmFace) {
-  //   case 1:
-  //     happy();
-  //     randomDelay();
-  //     break;
-  //   case 2:
-  //     for (int i; i < rdmCTP; i++) {
-  //       happyWink();
-  //     }
-  //     break;
-  //   case 3:
-  //     knock();
-  //     randomDelay();
-  //     break;
-  //   case 4:
-  //     display.clearDisplay();
-  //     instagram();
-  //     randomDelay();
-  //     break;
-  //   case 5:
-  //     tired();
-  //     randomDelay();
-  //     break;
-  //   case 6:
-  //     for (int i; i < rdmCTP; i++) {
-  //       blinking();
-  //     }
-  //     break;
-  //   case 7:
-  //    smile();
-  //    randomDelay();
-  //    break;
-  //   default:
-  //     break;
-  // }
+  switch (rdmFace) {
+    case 1:
+      normal();
+      randomDelay();
+      break;
+    case 2:
+      for (int i; i < rdmCTP; i++) {
+        happyWink();
+      }
+      break;
+    case 3:
+      knock();
+      randomDelay();
+      break;
+    case 4:
+      display.clearDisplay();
+      instagram();
+      randomDelay();
+      break;
+    case 5:
+      tired();
+      randomDelay();
+      break;
+    case 6:
+      for (int i; i < rdmCTP; i++) {
+        blinking();
+      }
+      break;
+    case 7:
+     smile();
+     randomDelay();
+     break;
+    default:
+      break;
+  }
 }
 
 void smile() {
@@ -89,7 +87,7 @@ void smile() {
   display.display();
 }
 
-void happy() {
+void normal() {
   display.clearDisplay();
   //Eyes
   //Left
@@ -113,7 +111,7 @@ void happy() {
 void happyWink() {
   display.clearDisplay();
 
-  happy();
+  normal();
   randomDelay();
 
   display.clearDisplay();
@@ -183,7 +181,7 @@ void tired() {
 }
 
 void blinking() {
-  happy();
+  normal();
   randomDelay();
 
   tired();
